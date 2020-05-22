@@ -1,17 +1,68 @@
 # Analisis Data Motor Trend US
 
-Halo semua. Kali ini kita akan menganalisis salah satu dataset yang ada di R, yaitu `mtcars`, tetapi menggunakan Python. Pada data ini, kita akan menyelidiki apa saja parts dari mobil yang mempengaruhi penggunaan bahan bakar dari mobil tersebut. Untuk datanya bisa temen-temen lihat di sini **Link**.
+Halo semua. Pada kesempatan kali ini, saya akan mencoba menganalisis salah satu dataset yang ada di R, yaitu `mtcars`, tetapi menggunakan Python. Ini adalah hasil analisis data saya pertama kali (di luar perkuliahan) yang saya publikasikan. Saya hanya ingin membagikan ilmu yang sudah saya pelajari selama ini kepada teman-teman semua yang ingin belajar menganalisis data. Tentunya saya juga bisa belajar dari teman-teman yang lebih expert di bidang analisis data melalui komentar yang nantinya teman-teman berikan. 
 
-Untuk analisis data kali ini, kita akan menggunakan analisis regresi linear sederhana. Sebagai tahapan awal, kita akan membagi datanya menjadi 2, yaitu data train dan data test. Data train akan kita gunakan untuk membentuk model sedangkan data test akan kita gunakan untuk menguji model kita. Dari keseluruhan data, kita akan pilih 80% data secara acak sebagai data train, dan 20% data secara acak sebagai data test.
+Di sini, saya akan menyelidiki apa saja yang mempengaruhi penggunaan bahan bakar (mpg) dari sebuah mobil. Beberapa variabel yang ada di dataset `mtcars` ini adalah
+```
+mpg  : miles per galoon
+cyl  : number of cylinders
+disp : displacement
+hp   : gross horsepower
+drat : rear axle ratio
+wt   : weight (1000 lbs)
+qsec : 1/4 mile time
+vs   : engine (0 = V-shaped, 1 = straight)
+am   : transmission (0 = automatic, 1 = manual)
+gear : number of forward gears
+carb : Number of carburetors
+```
+Untuk selanjutnya, mpg akan saya sebut sebagai variabel dependen sedangkan sisanya saya sebut sebagai variabel independen.
 
-Setelah kita membagi datanya, kita akan selidiki beberapa asumsi awal analisis regresi linear. Asumsi yang akan kita selidiki adalah
-1. Cek linearitas dari variabel dependen dengan variabel independen.
-2. Cek multikolinearitas dari variabel independen.
+Saya akan menggunakan analisis regresi linear sederhana. Tentunya bagaimana menganalisis data tiap orang berbeda, tetapi saya menggunakan analisis ini karena analisis ini lebih mudah. Untuk dataset `mtcars` bisa teman-teman lihat **di sini** dan untuk syntax yang saya buat dapat dilihat **di sini**. 
 
-Pertama kita akan mengecek apakah terdapat hubungan linear antara penggunaan bahan bakar dengan jumlah beberapa parts dari mobil. Untuk menyelidikinya, kita bisa melihatnya dari scatter plot di bawah ini.
+Pertama saya akan mengimport beberapa modules python yang saya butuhkan. Modules yang akan saya gunakan adalah sebagai berikut:
+```Python
+import pandas as pd
+import plotly.graph_objs as go
+from plotly.subplots import make_subplots
+import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from statsmodels.sandbox.stats.runs import runstest_1samp
+from sklearn.model_selection import train_test_split
+from scipy.stats import shapiro
+```
+
+## Data Train dan Data Test
+Sebagai tahapan awal, saya akan membagi datanya menjadi 2, yaitu data train dan data test. Data train akan saya gunakan untuk membentuk model sedangkan data test akan saya gunakan untuk menguji model yang sudah terbentuk. Dari keseluruhan data, saya akan pilih 80% data secara acak sebagai data train, dan 20% data secara acak sebagai data test.
+```Python
+#input data
+df = pd.read_excel ('mtcars.xlsx')
+
+#bagi antara variabel independen dengan variabel dependen
+X = df[['cyl','disp','hp','drat','wt','qsec','vs','am','gear','carb']]
+Y = df['mpg']
+
+#bagi data menjadi train dan test
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+
+#reset index
+X_train = X_train.reset_index(drop = True)
+X_test = X_test.reset_index(drop = True)
+Y_train = Y_train.reset_index(drop = True)
+Y_test = Y_test.reset_index(drop = True)
+```
+Data train dan data test yang saya gunakan dapat teman-teman lihat **di sini** dan **di sini**.
+
+## Asumsi awal
+Setelah membagi datanya, selanjutnya akan selidiki beberapa asumsi awal analisis regresi linear. Asumsi yang akan diselidiki adalah
+1. Cek apakah ada hubungan linear antara linearitas dari variabel dependen dengan variabel independen. (***Linearitas***)
+2. Cek apakah setiap variabel independen saling mempengaruhi satu sama lain. (***Multikolinearitas***)
+
+### Linearitas
+Pertama saya akan mengecek apakah terdapat hubungan linear antara variabel dependen dengan variabel independen lainnya. Untuk menyelidikinya, kita bisa melihatnya dari scatter plot di bawah ini.
 **Gambar**
 
-Kalau kita lihat scatter plot di atas, tampak bahwa terdapat hubungan linear antara beberapa variabel independen dengan variabel mpg. Kita dapat simpulkan beberapa hal sebagai berikut:
+Berdasarkan scatter plot di atas, tampak bahwa terdapat hubungan linear antara beberapa variabel independen dengan variabel mpg. Kita dapat simpulkan beberapa hal sebagai berikut:
 1. Terdapat hubungan linear negatif antara variabel cyl dan mpg. Artinya, semakin banyak silinder pada mobil, semakin sedikit bahan bakar yang terpakai.
 2. Terdapat hubungan linear negatif antara variabel disp dan mpg. Artinya, semakin besar displacement pada mobil, semakin sedikit bahan bakar yang terpakai.
 3. Terdapat hubungan linear negatif antara variabel hp dan mpg. Artinya, semakin besar horsepower mobil, semakin sedikit bahan bakar yang terpakai.
@@ -24,6 +75,7 @@ Kalau kita lihat scatter plot di atas, tampak bahwa terdapat hubungan linear ant
 10. Terdapat hubungan linear negatif antara variabel carb dan mpg. Artinya, semakin banyak karburator pada mobil, semakin sedikit bahan bakar yang terpakai.
 Sekilas mungkin untuk variabel gear tidak memiliki hubungan linear dengan mpg. Tapi kita asumsikan variabel gear memiliki hubungan linear dengan mpg.
 
+## Multikolinearitas
 Selanjutnya, kita akan menyelidiki apakah variabel-variabel independen pada data kita saling berhubungan atau tidak. Kita akan mengecek nilai VIF dari masing-masing variabel. Jika VIF > 10, maka variabel tersebut memiliki hubungan dengan variabel independen lainnya. Kita akan membuang variabel dengan VIF terbesar kemudian kita akan cek kembali VIF variabel-variabel yang tersisa (Konstanta akan tetap dipertahankan). Kita akan ulangi terus sampai kita peroleh VIF dari semua variabel kurang dari 10. Berikut rangkuman nilai VIF dari setiap iterasi.
 **Tabel**
 
