@@ -251,8 +251,61 @@ Kita akan melakukan diagnostic checking pada model yang sudah kita pilih. Diagno
 2. Cek apakah terdapat autokorelasi dari residual.
 3. Cek homoskedastisitas dari residual.
 
-Untuk mengecek normalitas dari residual, kita akan melakukan uji shapiro-wilk. Hipotesis nol dari uji ini adalah residual berdistribusi normal. Hipotesis nol akan ditolak jika p-value $< 0.05$.
+### Normalitas Residual
+Untuk mengecek normalitas dari residual, kita akan melakukan uji shapiro-wilk. Hipotesis nol dari uji ini adalah residual berdistribusi normal. Hipotesis nol akan ditolak jika p-value < 0.05.
+```Python
+#cek normalitas residual model 1
+result = shapiro(model[0].resid)
+print('P-value :',result[1])
+```
+`P-value : 0.8178114295005798`
 
-Karena p-value $=0.8178114295005798 > 0.05$, maka hipotesis nol tidak ditolak sehingga residual berdistribusi normal.
+Karena p-value > 0.05, maka hipotesis nol tidak ditolak sehingga residual berdistribusi normal.
 
-Selanjutnya untuk mengecek autokorelasi dari residual, kita akan melakukan uji runs. Hipotesis nol dari uji ini adalah residual bersifat acak (tidak ada autokorelasi). Hipotesis akan ditolak jika p-value $<0.05$.
+### Autokorelasi Residual
+Selanjutnya untuk mengecek autokorelasi dari residual, kita akan melakukan uji runs. Hipotesis nol dari uji ini adalah residual bersifat acak (tidak ada autokorelasi). Hipotesis akan ditolak jika p-value <0.05.
+```Python
+#cek autokorelasi residual model 1
+result = runstest_1samp(model[0].resid)[1]
+print('P-value :',result)
+```
+`P-value : 0.9934688058918629`
+
+Karena p-value 0.05, maka hipotesis nol tidak ditolak sehingga tidak ada autokorelasi pada residual. Artinya residual-residual data tidak saling mempengaruhi.
+
+### Homoskedastisitas Residual
+
+Selanjutnya untuk mengecek homoskedastisitas dari residual, kita perhatikan plot di bawah ini.
+```Python
+homos_variance_data = go.Scatter(
+    x = model[0].fittedvalues,
+    y = model[0].resid,
+    mode = 'markers', 
+    marker = {'color' : 'black'}
+)
+
+layout = {
+    'title' : {
+        'text' : 'Homoskedasticity Scatter Plot',
+        'x' : 0.5
+    },
+    'xaxis' : {
+        'title' : 'Fitted Values'
+    },
+    'yaxis' : {
+        'title' : 'Residuals'
+    }
+}
+
+fig = go.Figure(data = homos_variance_data, layout = layout)
+
+fig.show()
+```
+![Homoskedasticity Scatter Plot](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/Homoskedasticity_Scatter_Plot.png)
+
+Berdasarkan plot di atas, dapat dilihat bahwa data tidak membentuk suatu pola tertentu sehingga data residual memiliki variansi yang sama (homoskedastisitas residual terpenuhi).
+
+Karena model 1 memenuhi ketiga diagnostic checking, maka model 1 sudah merupakan model yang benar-benar baik. 
+
+## Data Testing
+Kita coba test model 1 ini dengan data test yang sudah kita punya.
