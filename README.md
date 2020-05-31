@@ -18,7 +18,7 @@ carb : Number of carburetors
 ```
 Untuk selanjutnya, mpg akan saya sebut sebagai variabel dependen sedangkan sisanya saya sebut sebagai variabel independen.
 
-Saya akan menggunakan analisis regresi linear sederhana. Tentunya bagaimana menganalisis data tiap orang berbeda, tetapi saya menggunakan analisis ini karena analisis ini lebih mudah. Untuk dataset `mtcars` bisa teman-teman lihat **di sini** dan untuk syntax yang saya buat dapat dilihat **di sini**. 
+Saya akan menggunakan analisis regresi linear sederhana. Tentunya bagaimana menganalisis data tiap orang berbeda, tetapi saya menggunakan analisis ini karena analisis ini lebih mudah. Untuk dataset `mtcars` bisa teman-teman lihat [di sini](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/mtcars.xlsx) dan untuk syntax yang saya buat dapat dilihat **di sini**. 
 
 Pertama saya akan mengimport beberapa modules python yang saya butuhkan. Modules yang akan saya gunakan adalah sebagai berikut:
 ```Python
@@ -55,7 +55,7 @@ Y_test = Y_test.reset_index(drop = True)
 X = X_train
 Y = Y_train
 ```
-Data train dan data test yang saya gunakan dapat teman-teman lihat **di sini** dan **di sini**.
+Data train dan data test yang saya gunakan dapat teman-teman lihat [di sini](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/data_train.xlsx) dan [di sini](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/data_test.xlsx).
 
 ## Asumsi awal
 Setelah membagi datanya, selanjutnya akan selidiki beberapa asumsi awal analisis regresi linear. Asumsi yang akan diselidiki adalah
@@ -333,6 +333,20 @@ Predicted Values | True Values | Residuals
 30.224956        | 22.8        | 7.424956
 14.885272        | 17.3        | -2.414728
 
-Berdasarkan tabel di atas, dapat dilihat bahwa nilai residual berada pada rentang -1 sampai 10. 
+Dari tabel di atas, dapat dilihat bahwa nilai residual berada pada rentang -1 sampai 10. 
 
 ## Kesimpulan
+Berdasarkan analisis yang sudah kita lakukan, kita peroleh model untuk mengestimasi nilai mpg adalah <br>
+> mpg = 5.0293 + 0.0155 hp + 2.3856 drat - 0.3515 wt + 0.1904 qsec + 2.4657 vs + 6.0699 am + 1.3572 gear - 2.1244 carb.
+
+Model di atas dapat diinterpretasikan sebagai berikut.
+1. Setiap penambahan 1 satuan variabel hp mengakibatkan variabel mpg bertambah sebesar 0.0155 dengan mengasumsikan variabel lainnya tetap.
+2. Setiap penambahan 1 satuan variabel drat mengakibatkan variabel mpg bertambah sebesar 2.3856 dengan mengasumsikan variabel lainnya tetap.
+3. Setiap penambahan 1 satuan variabel wt mengakibatkan variabel mpg berkurang sebesar 0.3515 dengan mengasumsikan variabel lainnya tetap.
+4. Setiap penambahan 1 satuan variabel qsec mengakibatkan variabel mpg bertambah sebesar 0.1904 dengan mengasumsikan variabel lainnya tetap.
+5. Setiap penambahan 1 satuan variabel vs mengakibatkan variabel mpg bertambah sebesar 2.4657 dengan mengasumsikan variabel lainnya tetap.
+6. Setiap penambahan 1 satuan variabel am mengakibatkan variabel mpg bertambah sebesar 6.0699 dengan mengasumsikan variabel lainnya tetap.
+7. Setiap penambahan 1 satuan variabel gear mengakibatkan variabel mpg bertambah sebesar 1.3572 dengan mengasumsikan variabel lainnya tetap.
+8. Setiap penambahan 1 satuan variabel carb mengakibatkan variabel mpg berkurang sebesar 2.1244 dengan mengasumsikan variabel lainnya tetap.
+
+Memang sebenarnya model di atas masih kurang baik untuk digunakan karena residualnya masih terlalu besar. Metode stepwise regression juga kurang disarankan untuk digunakan dalam permasalahan nyata karena estimatornya bias dan penyeleksian variabelnya dapat mengakibatkan underfitting. Namun metode ini cocok digunakan untuk pemula dalam belajar analisis data (seperti saya hehehe....). Semoga bermaanfaat bagi kita semua.
