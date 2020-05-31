@@ -211,9 +211,29 @@ Walaupun semua variabel pada model ke-6 sudah signifikan, tetapi belum tentu mod
 4. Log-Likelihood (semakin kecil nilainya, semakin baik modelnya)
 5. AIC (semakin kecil nilainya, semakin baik modelnya)
 6. BIC (semakin kecil nilainya, semakin baik modelnya)
+```Python
+r_squared = []
+adj_r_squared = []
+sse = []
+aic = []
+bic = []
 
+for i in model:
+    r_squared.append(i.rsquared)
+    adj_r_squared.append(i.rsquared_adj)
+    sse.append(i.ssr)
+    aic.append(i.aic)
+    bic.append(i.bic)
+```
 Berikut rangkuman nilai-nilai statistik dari setiap modelnya.
-**Tabel**
+Model | R-Squared | Adj R-Squared| Sum Square Error| Log-Likelihood | AIC        | BIC
+----- | --------- | ------------ | --------------- | -------------- | ---------- | ----------
+1     | 0.938899  | 0.908349     | 59.546839       | -46.322056     | 110.644111 | 121.613994
+2     | 0.938512  | 0.913194     | 59.923853       | -46.400949     | 108.801897 | 118.552904
+3     | 0.938249  | 0.917666     | 60.180040       | -46.454275     | 106.908549 | 115.440680
+4     | 0.934507  | 0.917272     | 63.827037       | -47.189726     | 106.379453 | 113.692708
+5     | 0.929296  | 0.915156     | 68.905413       | -48.146700     | 106.293400 | 112.387779
+6     | 0.914661  | 0.902470     | 83.168500       | -50.498374     | 108.996748 | 113.872251
 
 Dari beberapa nilai statistik model di atas, diperoleh:
 1. Model 1 memiliki nilai R-Squared terbesar
@@ -223,7 +243,10 @@ Dari beberapa nilai statistik model di atas, diperoleh:
 5. Model 5 memiliki nilai AIC terkecil
 6. Model 5 memiliki nilai BIC terkecil
 
-Dapat dilihat bahwa model 6 hanya memenuhi 1 kriteria model terbaik, sedangkan model 1 dan model 5 memenuhi 2 kriteria model terbaik. Karena model 1 memiliki lebih banyak variabel independen, kita akan memilih model 1 sebagai model terbaik (untuk sementara). Kita akan melakukan diagnostic checking pada model yang sudah kita pilih. Diagnostic checking yang kan kita lakukan adalah
+Dapat dilihat bahwa model 6 hanya memenuhi 1 kriteria model terbaik, sedangkan model 1 dan model 5 memenuhi 2 kriteria model terbaik. Karena model 1 memiliki lebih banyak variabel independen, kita akan memilih model 1 sebagai model terbaik (untuk sementara). 
+
+## Diagnostic Checking
+Kita akan melakukan diagnostic checking pada model yang sudah kita pilih. Diagnostic checking yang kan kita lakukan adalah
 1. Cek apakah residual berdistribusi normal.
 2. Cek apakah terdapat autokorelasi dari residual.
 3. Cek homoskedastisitas dari residual.
