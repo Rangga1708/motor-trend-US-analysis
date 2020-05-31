@@ -100,6 +100,7 @@ fig.update_layout(layout)
 
 fig.show()
 ```
+<img src="Scatter_Plot_Linearitas.png" class="img-responsive" alt=""> </div>
 ![Scatter Plot Lineartias](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/Scatter_Plot_Linearitas.png)
 
 Berdasarkan scatter plot di atas, tampak bahwa terdapat hubungan linear antara beberapa variabel independen dengan variabel mpg. Kita dapat simpulkan beberapa hal sebagai berikut:
