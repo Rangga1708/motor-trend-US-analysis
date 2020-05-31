@@ -50,6 +50,10 @@ X_train = X_train.reset_index(drop = True)
 X_test = X_test.reset_index(drop = True)
 Y_train = Y_train.reset_index(drop = True)
 Y_test = Y_test.reset_index(drop = True)
+
+#menamai ulang variabel
+X = X_train
+Y = Y_train
 ```
 Data train dan data test yang saya gunakan dapat teman-teman lihat **di sini** dan **di sini**.
 
@@ -196,12 +200,12 @@ Model | Variabel | Koefisien | P-Value
 6    | const <br> cyl <br> vs <br> am <br> carb | 19.864 <br> 4.1979 <br> 8.6664 <br> -1.5869 | 0.0 <br> 0.0 <br> 0.0 <br> 0.0
 
 Dari rangkuman model di atas, kita peroleh 6 model sebagai berikut:
-1. $mpg = 5.0293 + 0.0155 hp + 2.3856 drat - 0.3515 wt + 0.1904 qsec + 2.4657 vs + 6.0699 am + 1.3572 gear - 2.1244 carb$
-2. $mpg = 4.7143 + 0.0146 hp + 2.4828 drat + 0.1141 qsec + 2.6869 vs + 6.2544 am + 1.4795 gear - 2.2185 carb$
-3. $mpg = 7.0518 + 0.0132 hp + 2.4601 drat + 2.9060 vs + 6.1124 am + 1.4651 gear - 2.2180 carb$
-4. $mpg = 10.1872 + 2.0471 drat + 2.6007 vs + 5.9254 am + 1.3103 gear - 1.8558 carb$
-5. $mpg = 12.9007 + 2.2434 drat + 3.1553 vs + 7.1908 am - 1.6252 carb$
-6. $mpg = 19.8640 + 4.1979 vs + 8.6664 am - 1.5869 carb$
+1. mpg = 5.0293 + 0.0155 hp + 2.3856 drat - 0.3515 wt + 0.1904 qsec + 2.4657 vs + 6.0699 am + 1.3572 gear - 2.1244 carb
+2. mpg = 4.7143 + 0.0146 hp + 2.4828 drat + 0.1141 qsec + 2.6869 vs + 6.2544 am + 1.4795 gear - 2.2185 carb
+3. mpg = 7.0518 + 0.0132 hp + 2.4601 drat + 2.9060 vs + 6.1124 am + 1.4651 gear - 2.2180 carb
+4. mpg = 10.1872 + 2.0471 drat + 2.6007 vs + 5.9254 am + 1.3103 gear - 1.8558 carb
+5. mpg = 12.9007 + 2.2434 drat + 3.1553 vs + 7.1908 am - 1.6252 carb
+6. mpg = 19.8640 + 4.1979 vs + 8.6664 am - 1.5869 carb
 
 ## Pemilihan Model Terbaik
 Walaupun semua variabel pada model ke-6 sudah signifikan, tetapi belum tentu model tersebut adalah model yang terbaik. Kita akan pilih model yang terbaik dengan membandingkan beberapa nilai statistik setiap modelnya, seperti:
@@ -308,4 +312,27 @@ Berdasarkan plot di atas, dapat dilihat bahwa data tidak membentuk suatu pola te
 Karena model 1 memenuhi ketiga diagnostic checking, maka model 1 sudah merupakan model yang benar-benar baik. 
 
 ## Data Testing
-Kita coba test model 1 ini dengan data test yang sudah kita punya.
+Selanjutnya, kita coba test model 1 ini dengan data test yang sudah kita punya.
+```Python
+X = X_test
+X = sm.add_constant(X)
+Y = Y_test
+
+Predicted_Values = model[0].predict(X)
+True_Values = Y
+Residuals = Predicted_Values-True_Values
+```
+Berikut tabel perbandingan antara Predicted Values dan True Values.
+Predicted Values | True Values | Residuals
+---------------- | ----------- | ---------
+21.068265        | 21.4        | -0.331735
+12.583638        | 10.4        | 2.183638
+21.126499        | 24.4        | -3.273501
+25.199310        | 15.8        | 9.399310
+28.805596        | 21.4        | 7.405596
+30.224956        | 22.8        | 7.424956
+14.885272        | 17.3        | -2.414728
+
+Berdasarkan tabel di atas, dapat dilihat bahwa nilai residual berada pada rentang -1 sampai 10. 
+
+## Kesimpulan
