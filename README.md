@@ -60,7 +60,47 @@ Setelah membagi datanya, selanjutnya akan selidiki beberapa asumsi awal analisis
 
 ### Linearitas
 Pertama saya akan mengecek apakah terdapat hubungan linear antara variabel dependen dengan variabel independen lainnya. Untuk menyelidikinya, kita bisa melihatnya dari scatter plot di bawah ini.
-**Gambar**
+```Python
+#siapkan figure subplot
+fig = make_subplots(
+    rows = 5, cols = 2,
+    subplot_titles = ("Cyl and Mpg", 
+                      "Disp and Mpg", 
+                      "Hp and Mpg", 
+                      "Drat and Mpg", 
+                      "WT and Mpg",
+                      "Qsec and Mpg", 
+                      "VS and Mpg", 
+                      "AM and Mpg", 
+                      "Gear and Mpg", 
+                      "Carb and Mpg")
+)
+
+#buat plot masing-masing subplot
+index = 0
+for i in range(1,6):
+    for j in range(1,3):
+        fig.add_trace(go.Scatter(x = X[X.keys()[index]], y = Y, mode = 'markers', marker = {'color' : 'black'}), row = i, col = j)
+        fig.update_xaxes(title_text = X.keys()[index], row = i, col = j)
+        fig.update_yaxes(title_text = 'mpg', row = i, col = j)
+        index = index+1
+
+#atur layout        
+layout = {
+    'height' : 2000,
+    #'width' : 1000,
+    'title' : {
+        'text' : 'Scatter Plot',
+        'x' : 0.5
+    },
+    'showlegend' : False
+}
+
+fig.update_layout(layout)
+
+fig.show()
+```
+![Scatter Plot Lineartias](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/Scatter_Plot_Linearitas.png)
 
 Berdasarkan scatter plot di atas, tampak bahwa terdapat hubungan linear antara beberapa variabel independen dengan variabel mpg. Kita dapat simpulkan beberapa hal sebagai berikut:
 1. Terdapat hubungan linear negatif antara variabel cyl dan mpg. Artinya, semakin banyak silinder pada mobil, semakin sedikit bahan bakar yang terpakai.
@@ -73,18 +113,60 @@ Berdasarkan scatter plot di atas, tampak bahwa terdapat hubungan linear antara b
 8. Mobil matic akan memakai bahan bakar lebih sedikit dibandingkan dengan mobil manual.
 9. Mobil dengan 3 gigi akan memakai bahan bakar lebih sedikit dibandingkan dengan mobil dengan 5 gigi dibandingkan dengan mobil dengan 4 gigi.
 10. Terdapat hubungan linear negatif antara variabel carb dan mpg. Artinya, semakin banyak karburator pada mobil, semakin sedikit bahan bakar yang terpakai.
+
 Sekilas mungkin untuk variabel gear tidak memiliki hubungan linear dengan mpg. Tapi kita asumsikan variabel gear memiliki hubungan linear dengan mpg.
 
 ## Multikolinearitas
-Selanjutnya, kita akan menyelidiki apakah variabel-variabel independen pada data kita saling berhubungan atau tidak. Kita akan mengecek nilai VIF dari masing-masing variabel. Jika VIF > 10, maka variabel tersebut memiliki hubungan dengan variabel independen lainnya. Kita akan membuang variabel dengan VIF terbesar kemudian kita akan cek kembali VIF variabel-variabel yang tersisa (Konstanta akan tetap dipertahankan). Kita akan ulangi terus sampai kita peroleh VIF dari semua variabel kurang dari 10. Berikut rangkuman nilai VIF dari setiap iterasi.
-**Tabel**
+Selanjutnya, kita akan menyelidiki apakah variabel-variabel independen pada data kita saling mempengaruhi atau tidak. Kita akan mengecek nilai VIF dari masing-masing variabel. Jika VIF > 10, maka variabel tersebut memiliki hubungan dengan variabel independen lainnya. Kita akan membuang variabel dengan VIF terbesar kemudian kita akan cek kembali VIF variabel-variabel yang tersisa (Konstanta akan tetap dipertahankan). Kita akan ulangi terus sampai kita peroleh VIF dari semua variabel kurang dari 10. Berikut rangkuman nilai VIF dari setiap iterasi.
+```Python
+X = sm.add_constant(X)
+
+#hitung VIF
+VIF = pd.Series([variance_inflation_factor(X.values, i) 
+               for i in range(X.shape[1])], 
+              index=X.columns)
+print(VIF,'\n')
+
+#jika VIF konstanta terbesar, cari terbesar kedua
+if list(VIF).index(max(VIF)) == 0:    
+    new_VIF = VIF[1:]
+    drop_variable_VIF = max(new_VIF)
+
+while drop_variable_VIF > 10 and len(X.keys())!=0:
+    #buang variabel dengan VIF terbesar dan lebih dari 10
+    drop_variable_index = list(VIF).index(drop_variable_VIF)                          
+    drop_variable = X.keys()[drop_variable_index]
+    X = X.drop(columns = drop_variable) 
+    
+    VIF = pd.Series([variance_inflation_factor(X.values, i) 
+               for i in range(X.shape[1])], 
+              index=X.columns)
+    print(VIF,'\n')
+    
+    #jika VIF konstanta terbesar, cari terbesar kedua
+    if list(VIF).index(max(VIF)) == 0:    
+        new_VIF = VIF[1:]
+        drop_variable_VIF = max(new_VIF)
+```
+Iterasi | Variabel | VIF
+------- | -------- | ---
+1       | const <br> cyl <br> disp <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 2149.280570 <br> 19.691673 <br> 22.176578 <br> 10.308235 <br> 4.114787 <br> 17.319301 <br> 7.284777 <br> 4.702383 <br> 5.234086 <br> 7.002498 <br> 11.759377
+2       | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 2149.201123 <br> 18.589723
+hp          6.615471
+drat        4.024375
+wt          8.076653
+qsec        6.744210
+vs          4.654625
+am          5.176873
+gear        7.000588
+carb        7.077009
 
 Dari hasil perhitungan di atas, dapat kita lihat bahwa ternyata nilai dari cyl dan disp dipengaruhi oleh variabel independen lainnya. Dengan demikian, kita perlu membuang variabel tersebut agar analisis regresi dapat dilakukan. 
 
-Selanjutnya, untuk memilih variabel apa saja yang signifikan terhadap model, kita akan menggunakan stepwise regression, khususnya backward elimination. Pertama, kita akan membentuk model menggunakan semua parameter. Kemudian kita akan lihat apakah ada variabel yang tidak signifikan (jika p-value lebih dari $\alpha$). Jika ada variabel yang tidak signifikan, kita keluarkan variabel tersebut (terutama yang p-value nya terbesar) kemudian kita bentuk model yang baru. Langkah ini diteruskan sampai semua variabel signifikan terhadap model. Untuk code dan hasil lengkap tiap iterasi bisa dilihat di **Link**. Berikut rangkuman dari model-model yang diperoleh dari hasil perhitungan Python.
+Selanjutnya, untuk memilih variabel apa saja yang signifikan terhadap model, kita akan menggunakan stepwise regression, khususnya backward elimination. Pertama, kita akan membentuk model menggunakan semua variabel. Kemudian kita akan lihat apakah ada variabel yang tidak signifikan (jika p-value lebih dari $\alpha$). Jika ada variabel yang tidak signifikan, kita keluarkan variabel tersebut (terutama yang p-value nya terbesar) kemudian kita bentuk model yang baru. Langkah ini diteruskan sampai semua variabel signifikan terhadap model. Berikut rangkuman dari model-model yang diperoleh dari hasil perhitungan Python.
 **Tabel**
 
-Dari rangkuman model di atas, kita peroleh 9 model sebagai berikut:
+Dari rangkuman model di atas, kita peroleh 6 model sebagai berikut:
 1. $mpg = 5.0293 + 0.0155 hp + 2.3856 drat - 0.3515 wt + 0.1904 qsec + 2.4657 vs + 6.0699 am + 1.3572 gear - 2.1244 carb$
 2. $mpg = 4.7143 + 0.0146 hp + 2.4828 drat + 0.1141 qsec + 2.6869 vs + 6.2544 am + 1.4795 gear - 2.2185 carb$
 3. $mpg = 7.0518 + 0.0132 hp + 2.4601 drat + 2.9060 vs + 6.1124 am + 1.4651 gear - 2.2180 carb$
@@ -92,13 +174,13 @@ Dari rangkuman model di atas, kita peroleh 9 model sebagai berikut:
 5. $mpg = 12.9007 + 2.2434 drat + 3.1553 vs + 7.1908 am - 1.6252 carb$
 6. $mpg = 19.8640 + 4.1979 vs + 8.6664 am - 1.5869 carb$
 
-Di antara keenam model tersebut, kita akan pilih model yang terbaik. Walaupun semua variabel pada model ke-6 sudah signifikan, tetapi belum tentu model tersebut adalah model yang terbaik. Kita akan membandingkan beberapa nilai statistik setiap modelnya, seperti:
-1. R-squared (semakin besar nilainya, semakin baik)
-2. Adj R-Squared (semakin besar nilainya, semakin baik)
-3. Sum squared error (SSE) (semakin kecil nilainya, semakin baik)
-4. Log-Likelihood (semakin kecil nilainya, semakin baik)
-5. AIC (semakin kecil nilainya, semakin baik)
-6. BIC (semakin kecil nilainya, semakin baik)
+Walaupun semua variabel pada model ke-6 sudah signifikan, tetapi belum tentu model tersebut adalah model yang terbaik. Kita akan pilih model yang terbaik dengan membandingkan beberapa nilai statistik setiap modelnya, seperti:
+1. R-squared (semakin besar nilainya, semakin baik modelnya)
+2. Adj R-Squared (semakin besar nilainya, semakin baik modelnya)
+3. Sum squared error (SSE) (semakin kecil nilainya, semakin baik modelnya)
+4. Log-Likelihood (semakin kecil nilainya, semakin baik modelnya)
+5. AIC (semakin kecil nilainya, semakin baik modelnya)
+6. BIC (semakin kecil nilainya, semakin baik modelnya)
 
 Berikut rangkuman nilai-nilai statistik dari setiap modelnya.
 **Tabel**
@@ -111,7 +193,7 @@ Dari beberapa nilai statistik model di atas, diperoleh:
 5. Model 5 memiliki nilai AIC terkecil
 6. Model 5 memiliki nilai BIC terkecil
 
-Dari rangkuman di atas, dapat dilihat bahwa model 6 hanya memenuhi 1 kriteria model terbaik, sedangkan model 1 dan model 5 memenuhi 2 kriteria model terbaik. Karena model 1 memiliki lebih banyak variabel independen, kita akan memilih model 1 sebagai model terbaik (untuk sementara). Kita akan melakukan diagnostic checking pada model yang sudah kita pilih. Diagnostic checking yang kan kita lakukan adalah
+Dapat dilihat bahwa model 6 hanya memenuhi 1 kriteria model terbaik, sedangkan model 1 dan model 5 memenuhi 2 kriteria model terbaik. Karena model 1 memiliki lebih banyak variabel independen, kita akan memilih model 1 sebagai model terbaik (untuk sementara). Kita akan melakukan diagnostic checking pada model yang sudah kita pilih. Diagnostic checking yang kan kita lakukan adalah
 1. Cek apakah residual berdistribusi normal.
 2. Cek apakah terdapat autokorelasi dari residual.
 3. Cek homoskedastisitas dari residual.
