@@ -158,7 +158,8 @@ Iterasi | Variabel | VIF
 
 Dari hasil perhitungan di atas, dapat kita lihat bahwa ternyata nilai dari cyl dan disp dipengaruhi oleh variabel independen lainnya. Dengan demikian, kita perlu membuang variabel tersebut agar analisis regresi dapat dilakukan. 
 
-Selanjutnya, untuk memilih variabel apa saja yang signifikan terhadap model, kita akan menggunakan stepwise regression, khususnya backward elimination. Pertama, kita akan membentuk model menggunakan semua variabel. Kemudian kita akan lihat apakah ada variabel yang tidak signifikan (jika p-value lebih dari ![Alpha](https://latex.codecogs.com/gif.latex?%5Calpha)). Jika ada variabel yang tidak signifikan, kita keluarkan variabel tersebut (terutama yang p-value nya terbesar) kemudian kita bentuk model yang baru. Langkah ini diteruskan sampai semua variabel signifikan terhadap model. Berikut rangkuman dari model-model yang diperoleh dari hasil perhitungan Python.
+## Variable Selection
+Selanjutnya, untuk memilih variabel apa saja yang signifikan terhadap model, kita akan menggunakan stepwise regression, khususnya backward elimination. Pertama, kita akan membentuk model menggunakan semua variabel. Kemudian kita akan lihat apakah ada variabel yang tidak signifikan (jika p-value lebih dari ![Alpha](https://latex.codecogs.com/gif.latex?%5Calpha)). Jika ada variabel yang tidak signifikan, kita keluarkan variabel tersebut (terutama yang p-value nya terbesar) kemudian kita bentuk model yang baru. Langkah ini diteruskan sampai semua variabel signifikan terhadap model.
 ```Python
 model = []
 loglikelihood = []
@@ -189,8 +190,10 @@ Model | Variabel | Koefisien | P-Value
 ----- | -------- | --------- | -------
 1     | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 5.0293 <br> 0.0155 <br> 2.3856 <br> -0.3515 <br> 0.1904 <br> 2.4657 <br> 6.0699 <br> 1.3572 <br> -2.1244 | 0.637 <br> 0.306 <br> 0.079 <br> 0.754 <br> 0.707 <br> 0.15 <br> 0.003 <br> 0.274 <br> 0.002
 2     | const <br> cyl <br> hp <br> drat <br> qsec <br> vs <br> am <br> gear <br> carb | 4.7143 <br> 0.0146 <br> 2.4828 <br> 0.1141 <br> 2.6869 <br> 6.2544 <br> 1.4795 <br> -2.2185 | 0.648 <br> 0.311 <br> 0.054 <br> 0.791 <br> 0.079 <br> 0.001 <br> 0.198 <br> 0.0
-3     | const <br> cyl <br> hp <br> drat <br> vs <br> am <br> gear <br> carb
-
+3     | const <br> cyl <br> hp <br> drat <br> vs <br> am <br> gear <br> carb | 7.0518 <br> 0.0132 <br> 2.4601 <br> 2.906 <br> 6.1124 <br> 1.4651 <br> -2.218 | 0.186 <br> 0.31 <br> 0.049 <br> 0.021 <br> 0.001 <br> 0.189 <br> 0.0
+4    | const <br> cyl <br> drat <br> vs <br> am <br> gear <br> carb | 10.1872 <br> 2.0471 <br> 2.6007 <br> 5.9254 <br> 1.3103 <br> -1.8558 | 0.024 <br> 0.078 <br> 0.031 <br> 0.001 <br> 0.234 <br> 0.0
+5    | const <br> cyl <br> drat <br> vs <br> am <br> carb | 12.9007 <br> 2.2434 <br> 3.1553 <br> 7.1908 <br> -1.6252 | 0.002 <br> 0.055 <br> 0.006 <br> 0.0 <br> 0.0
+6    | const <br> cyl <br> vs <br> am <br> carb | 19.864 <br> 4.1979 <br> 8.6664 <br> -1.5869 | 0.0 <br> 0.0 <br> 0.0 <br> 0.0
 
 Dari rangkuman model di atas, kita peroleh 6 model sebagai berikut:
 1. $mpg = 5.0293 + 0.0155 hp + 2.3856 drat - 0.3515 wt + 0.1904 qsec + 2.4657 vs + 6.0699 am + 1.3572 gear - 2.1244 carb$
@@ -200,6 +203,7 @@ Dari rangkuman model di atas, kita peroleh 6 model sebagai berikut:
 5. $mpg = 12.9007 + 2.2434 drat + 3.1553 vs + 7.1908 am - 1.6252 carb$
 6. $mpg = 19.8640 + 4.1979 vs + 8.6664 am - 1.5869 carb$
 
+## Pemilihan Model Terbaik
 Walaupun semua variabel pada model ke-6 sudah signifikan, tetapi belum tentu model tersebut adalah model yang terbaik. Kita akan pilih model yang terbaik dengan membandingkan beberapa nilai statistik setiap modelnya, seperti:
 1. R-squared (semakin besar nilainya, semakin baik modelnya)
 2. Adj R-Squared (semakin besar nilainya, semakin baik modelnya)
