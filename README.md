@@ -201,6 +201,7 @@ Berikut rangkuman dari nilai VIF setiap iterasi.
     <tr>	<td>	am </td> <td>   4.951499	</td>	</tr>
     <tr>	<td>	gear </td> <td> 5.176046	</td>	</tr>
     <tr>	<td>	carb </td> <td> 6.275307	</td>	</tr>
+</table>
 
 Dari hasil perhitungan di atas, dapat kita lihat bahwa ternyata nilai dari cyl dan disp dipengaruhi oleh variabel independen lainnya. Dengan demikian, kita perlu membuang variabel tersebut agar analisis regresi dapat dilakukan. 
 
