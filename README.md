@@ -232,6 +232,7 @@ while max(variables_pvalue) > 0.05 and len(X.keys())!=0:
 for i in model:
     print(i.summary())
 ```
+
 Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tiap model. Untuk nilai statistik lainnya dapat dilihat pada syntax.
 <table>
     <tr>
