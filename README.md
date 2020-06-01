@@ -246,69 +246,69 @@ Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tia
         <td>5.0293</td>
         <td>0.637</td>
     </tr>
-    <tr>	<td>	hp	    </td> <td>	0.0155	</td> <td>  0.306	</tr>
-    <tr>	<td>	drat	</td> <td>	2.3856	</td> <td>	0.079	</tr>
-    <tr>	<td>	wt	    </td> <td>	-0.3515	</td> <td>  0.754	</tr>
-    <tr>	<td>	qsec	</td> <td>	0.1904	</td> <td>	0.707	</tr>
-    <tr>	<td>	vs	    </td> <td>	2.4657	</td> <td>	0.15	</tr>
-    <tr>	<td>	am	    </td> <td>	6.0699	</td> <td>	0.003	</tr>
-    <tr>	<td>	gear	</td> <td>	1.3572	</td> <td>	0.274	</tr>
-    <tr>	<td>	carb	</td> <td>	-2.1244	</td> <td>	0.002	</tr>
+    <tr>	<td>	hp	    </td> <td>	0.0155	</td> <td>	0.306	</td> </tr>
+    <tr>	<td>	drat	</td> <td>	2.3856	</td> <td>	0.079	</td> </tr>
+    <tr>	<td>	wt	    </td> <td>	-0.3515	</td> <td> 	0.754	</td> </tr>
+    <tr>	<td>	qsec	</td> <td>	0.1904	</td> <td>	0.707	</td> </tr>
+    <tr>	<td>	vs	    </td> <td>	2.4657	</td> <td>	0.15	</td> </tr>
+    <tr>	<td>	am	    </td> <td>	6.0699	</td> <td>	0.003	</td> </tr>
+    <tr>	<td>	gear	</td> <td>	1.3572	</td> <td>	0.274	</td> </tr>
+    <tr>	<td>	carb	</td> <td>	-2.1244	</td> <td>	0.002	</td> </tr>
     <tr>
         <td rowspan="8">2</td>
         <td>const</td>
         <td>4.7143</td>
         <td>0.648</td>
     </tr>
-    <tr>	<td>	hp	    </td> <td>	0.0146	</td> <td>	0.311	</tr>
-    <tr>	<td>	drat	</td> <td>	2.4828	</td> <td>	0.054	</tr>
-    <tr>	<td>	qsec	</td> <td>	0.1141	</td> <td>	0.791	</tr>
-    <tr>	<td>	vs	    </td> <td>	2.6869	</td> <td>	0.079	</tr>
-    <tr>	<td>	am	    </td> <td>	6.2544	</td> <td>	0.001	</tr>
-    <tr>	<td>	gear	</td> <td>	1.4795	</td> <td>	0.198	</tr>
-    <tr>	<td>	carb	</td> <td>	-2.2185	</td> <td>	0	    </tr>
+    <tr>	<td>	hp	    </td> <td>	0.0146	</td> <td>	0.311	</td> </tr>
+    <tr>	<td>	drat	</td> <td>	2.4828	</td> <td>	0.054	</td> </tr>
+    <tr>	<td>	qsec	</td> <td>	0.1141	</td> <td>	0.791	</td> </tr>
+    <tr>	<td>	vs	    </td> <td>	2.6869	</td> <td>	0.079	</td> </tr>
+    <tr>	<td>	am	    </td> <td>	6.2544	</td> <td>	0.001	</td> </tr>
+    <tr>	<td>	gear	</td> <td>	1.4795	</td> <td>	0.198	</td> </tr>
+    <tr>	<td>	carb	</td> <td>	-2.2185	</td> <td>	0	    </td> </tr>
     <tr>
         <td rowspan="7">3</td>
         <td>const</td>
         <td>7.0518</td>
         <td>0.186</td>
     </tr>
-    <tr>	<td>	hp	    </td> <td>	0.0132	</td> <td>	0.31	</tr>
-    <tr>	<td>	drat	</td> <td>	2.4601	</td> <td>	0.049	</tr>
-    <tr>	<td>	vs	    </td> <td>	2.906	</td> <td>	0.021	</tr>
-    <tr>	<td>	am	    </td> <td>	6.1124	</td> <td>	0.001	</tr>
-    <tr>	<td>	gear	</td> <td>	1.4651	</td> <td>	0.189	</tr>
-    <tr>	<td>	carb	</td> <td>	-2.218	</td> <td>	0	    </tr>
+    <tr>	<td>	hp	    </td> <td>	0.0132	</td> <td>	0.31	</td> </tr>
+    <tr>	<td>	drat	</td> <td>	2.4601	</td> <td>	0.049	</td> </tr>
+    <tr>	<td>	vs	    </td> <td>	2.906	</td> <td>	0.021	</td> </tr>
+    <tr>	<td>	am	    </td> <td>	6.1124	</td> <td>	0.001	</td> </tr>
+    <tr>	<td>	gear	</td> <td>	1.4651	</td> <td>	0.189	</td> </tr>
+    <tr>	<td>	carb	</td> <td>	-2.218	</td> <td>	0	    </td> </tr>
     <tr>
         <td rowspan="6">4</td>
         <td>const</td>
         <td>10.1872</td>
         <td>0.024</td>
     </tr>
-    <tr>	<td>	drat	</td> <td>	2.0471	</td> <td>	0.078	</tr>
-    <tr>	<td>	vs	    </td> <td>	2.6007	</td> <td>	0.031	</tr>
-    <tr>	<td>	am	    </td> <td>	5.9254	</td> <td>	0.001	</tr>
-    <tr>	<td>	gear	</td> <td>	1.3103	</td> <td>	0.234	</tr>
-    <tr>	<td>	carb	</td> <td>	-1.8558	</td> <td>	0	    </tr>
+    <tr>	<td>	drat	</td> <td>	2.0471	</td> <td>	0.078	</td> </tr>
+    <tr>	<td>	vs	    </td> <td>	2.6007	</td> <td>	0.031	</td> </tr>
+    <tr>	<td>	am	    </td> <td>	5.9254	</td> <td>	0.001	</td> </tr>
+    <tr>	<td>	gear	</td> <td>	1.3103	</td> <td>	0.234	</td> </tr>
+    <tr>	<td>	carb	</td> <td>	-1.8558	</td> <td>	0	    </td> </tr>
     <tr>
         <td rowspan="5">5</td>
         <td>const</td>
         <td>12.9007</td>
         <td>0.002</td>
     </tr>
-    <tr>	<td>	drat	</td> <td>	2.2434	</td> <td>	0.055	</tr>
-    <tr>	<td>	vs	    </td> <td>	3.1553	</td> <td>	0.006	</tr>
-    <tr>	<td>	am	    </td> <td>	7.1908	</td> <td>	0	    </tr>
-    <tr>	<td>	carb	</td> <td>	-1.6252	</td> <td>	0	    </tr>
+    <tr>	<td>	drat	</td> <td>	2.2434	</td> <td>	0.055	</td> </tr>
+    <tr>	<td>	vs	    </td> <td>	3.1553	</td> <td>	0.006	</td> </tr>
+    <tr>	<td>	am	    </td> <td>	7.1908	</td> <td>	0	    </td> </tr>
+    <tr>	<td>	carb	</td> <td>	-1.6252	</td> <td>	0	    </td> </tr>
     <tr>
         <td rowspan="4">6</td>
         <td>const</td>
         <td>19.864</td>
         <td>0</td>
     </tr>
-    <tr>	<td>	vs	    </td> <td>	4.1979	</td> <td>	0	</tr>
-    <tr>	<td>	am	    </td> <td>	8.6664	</td> <td>	0	</tr>
-    <tr>	<td>	carb	</td> <td>	-1.5869	</td> <td>	0	</tr>
+    <tr>	<td>	vs	    </td> <td>	4.1979	</td> <td>	0	</td> </tr>
+    <tr>	<td>	am	    </td> <td>	8.6664	</td> <td>	0	</td> </tr>
+    <tr>	<td>	carb	</td> <td>	-1.5869	</td> <td>	0	</td> </tr>
 </table>
 
 Dari rangkuman model di atas, kita peroleh 6 model sebagai berikut:
