@@ -492,15 +492,34 @@ True_Values = Y
 Residuals = Predicted_Values-True_Values
 ```
 Berikut tabel perbandingan antara Predicted Values dan True Values.
-Predicted Values | True Values | Residuals
----------------- | ----------- | ---------
-21.068265        | 21.4        | -0.331735
-12.583638        | 10.4        | 2.183638
-21.126499        | 24.4        | -3.273501
-25.199310        | 15.8        | 9.399310
-28.805596        | 21.4        | 7.405596
-30.224956        | 22.8        | 7.424956
-14.885272        | 17.3        | -2.414728
+<table>
+    <tr>
+        <th> Predicted Values </th>
+        <th> True Values </th>
+        <th> Residuals </th>
+    </tr>
+    <tr>    
+        <td>	21.068265 </td> <td> 21.4 </td> <td> -0.331735			</td>
+    </tr>
+    <tr>
+        <td>	12.583638 </td> <td> 10.4 </td> <td> 2.183638			</td>
+    </tr>
+    <tr>
+        <td>	21.126499 </td> <td> 24.4 </td> <td> -3.273501			</td>
+    </tr>
+    <tr>
+        <td>	25.199310 </td> <td> 15.8 </td> <td> 9.399310			</td>
+    </tr>
+    <tr>
+        <td>	28.805596 </td> <td> 21.4 </td> <td> 7.405596			</td>
+    </tr>
+    <tr>
+        <td>	30.224956 </td> <td> 22.8 </td> <td> 7.424956			</td>
+    </tr>
+    <tr>
+        <td>	14.885272 </td> <td> 17.3 </td> <td> -2.414728			</td>
+    </tr>
+</table>
 
 Dari tabel di atas, dapat dilihat bahwa nilai residual berada pada rentang -1 sampai 10. 
 
