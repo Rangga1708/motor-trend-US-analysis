@@ -328,6 +328,7 @@ Walaupun semua variabel pada model ke-6 sudah signifikan, tetapi belum tentu mod
 4. Log-Likelihood (semakin kecil nilainya, semakin baik modelnya)
 5. AIC (semakin kecil nilainya, semakin baik modelnya)
 6. BIC (semakin kecil nilainya, semakin baik modelnya)
+
 ```Python
 r_squared = []
 adj_r_squared = []
