@@ -16,7 +16,7 @@ carb : Number of carburetors
 ```
 Untuk selanjutnya, mpg akan saya sebut sebagai variabel dependen sedangkan sisanya saya sebut sebagai variabel independen.
 
-Saya akan menggunakan analisis regresi linear sederhana. Tentunya bagaimana menganalisis data tiap orang berbeda, tetapi saya menggunakan analisis ini karena analisis ini lebih mudah. Untuk dataset `mtcars` bisa teman-teman lihat [di sini](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/mtcars.xlsx) dan untuk syntax yang saya buat dapat dilihat **di sini**. 
+Saya akan menggunakan analisis regresi linear sederhana. Tentunya bagaimana menganalisis data tiap orang berbeda, tetapi saya menggunakan analisis ini karena analisis ini lebih mudah. Untuk dataset `mtcars` bisa teman-teman lihat [di sini](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/mtcars.xlsx) dan untuk syntax yang saya buat dapat dilihat [di sini](https://github.com/Rangga1708/motor-trend-US-analysis/blob/master/Syntax%20Analisis%20Data%20Motor%20Trend%20US.ipynb). 
 
 Pertama saya akan mengimport beberapa modules python yang saya butuhkan. Modules yang akan saya gunakan adalah sebagai berikut:
 ```Python
