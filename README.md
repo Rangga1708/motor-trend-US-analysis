@@ -104,7 +104,8 @@ fig.update_layout(layout)
 
 fig.show()
 ```
-<img src="Scatter_Plot_Linearitas.png" class="img-responsive" alt=""> </div>
+
+<img src="Scatter_Plot_Linearitas.png" class="img-responsive" alt="">
 
 Berdasarkan scatter plot di atas, tampak bahwa terdapat hubungan linear antara beberapa variabel independen dengan variabel mpg. Kita dapat simpulkan beberapa hal sebagai berikut:
 1. Terdapat hubungan linear negatif antara variabel cyl dan mpg. Artinya, semakin banyak silinder pada mobil, semakin sedikit bahan bakar yang terpakai.
@@ -476,7 +477,8 @@ fig = go.Figure(data = homos_variance_data, layout = layout)
 
 fig.show()
 ```
-![Homoskedasticity Scatter Plot](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/Homoskedasticity_Scatter_Plot.png)
+
+<img src="Homoskedasticity_Scatter_Plot.png" class="img-responsive" alt="">
 
 Berdasarkan plot di atas, dapat dilihat bahwa data tidak membentuk suatu pola tertentu sehingga data residual memiliki variansi yang sama (homoskedastisitas residual terpenuhi).
 
