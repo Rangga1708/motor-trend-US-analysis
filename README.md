@@ -164,43 +164,43 @@ Berikut rangkuman dari nilai VIF setiap iterasi.
         <td>const</td>
         <td>2149.280570</td>
     </tr>
-    <tr>    <td>	cyl </td> <td> 19.691673	</td>	</tr>
-    <tr>	<td>	disp </td> <td> 22.176578	</td>	</tr>
-    <tr>	<td>	hp </td> <td> 10.308235	    </td>	</tr>
-    <tr>	<td>	drat </td> <td> 4.114787	</td>	</tr>
-    <tr>	<td>	wt </td> <td> 17.319301	    </td>	</tr>
-    <tr>	<td>	qsec </td> <td> 7.284777	</td>	</tr>
-    <tr>	<td>	vs </td> <td> 4.702383	    </td>	</tr>
-    <tr>	<td>	am </td> <td> 5.234086	    </td>	</tr>
-    <tr>	<td>	gear </td> <td> 7.002498	</td>	</tr>
-    <tr>	<td>	carb </td> <td> 11.759377	</td>	</tr>
+    <tr>    <td>	cyl     </td> <td> 19.691673	</td>	</tr>
+    <tr>	<td>	disp    </td> <td> 22.176578	</td>	</tr>
+    <tr>	<td>	hp      </td> <td> 10.308235	</td>	</tr>
+    <tr>	<td>	drat    </td> <td> 4.114787	    </td>	</tr>
+    <tr>	<td>	wt      </td> <td> 17.319301	</td>	</tr>
+    <tr>	<td>	qsec    </td> <td> 7.284777	    </td>	</tr>
+    <tr>	<td>	vs      </td> <td> 4.702383	    </td>	</tr>
+    <tr>	<td>	am      </td> <td> 5.234086	    </td>	</tr>
+    <tr>	<td>	gear    </td> <td> 7.002498	    </td>	</tr>
+    <tr>	<td>	carb    </td> <td> 11.759377	</td>	</tr>
     <tr>
         <td rowspan="10">2</td>
         <td>const</td>
         <td>2149.201123</td>
     </tr>
-    <tr>	<td>	cyl </td> <td>18.589723	</td>	</tr>
-    <tr>	<td>	hp </td> <td>  6.615471	</td>	</tr>
-    <tr>	<td>	drat </td> <td>4.024375	</td>	</tr>
-    <tr>	<td>	wt </td> <td>  8.076653	</td>	</tr>
-    <tr>	<td>	qsec </td> <td>6.744210	</td>	</tr>
-    <tr>	<td>	vs </td> <td>  4.654625	</td>	</tr>
-    <tr>	<td>	am </td> <td>  5.176873	</td>	</tr>
-    <tr>	<td>	gear </td> <td>7.000588	</td>	</tr>
-    <tr>	<td>	carb </td> <td>7.077009	</td>	</tr>
+    <tr>	<td>	cyl     </td> <td> 18.589723	</td>	</tr>
+    <tr>	<td>	hp      </td> <td> 6.615471	    </td>	</tr>
+    <tr>	<td>	drat    </td> <td> 4.024375	    </td>	</tr>
+    <tr>	<td>	wt      </td> <td> 8.076653	    </td>	</tr>
+    <tr>	<td>	qsec    </td> <td> 6.744210	    </td>	</tr>
+    <tr>	<td>	vs      </td> <td> 4.654625	    </td>	</tr>
+    <tr>	<td>	am      </td> <td> 5.176873	    </td>	</tr>
+    <tr>	<td>	gear    </td> <td> 7.000588	    </td>	</tr>
+    <tr>	<td>	carb    </td> <td> 7.077009	    </td>	</tr>
     <tr>
         <td rowspan="10">3</td>
         <td>const</td>
         <td>736.258880</td>
     </tr>
-    <tr>	<td>	hp </td> <td>   6.553351	</td>	</tr>
-    <tr>	<td>	drat </td> <td> 3.142362	</td>	</tr>
-    <tr>	<td>	wt </td> <td>   7.695028	</td>	</tr>
-    <tr>	<td>	qsec </td> <td> 5.254881	</td>	</tr>
-    <tr>	<td>	vs </td> <td>   4.291331	</td>	</tr>
-    <tr>	<td>	am </td> <td>   4.951499	</td>	</tr>
-    <tr>	<td>	gear </td> <td> 5.176046	</td>	</tr>
-    <tr>	<td>	carb </td> <td> 6.275307	</td>	</tr>
+    <tr>	<td>	hp      </td> <td> 6.553351	</td>	</tr>
+    <tr>	<td>	drat    </td> <td> 3.142362	</td>	</tr>
+    <tr>	<td>	wt      </td> <td> 7.695028	</td>	</tr>
+    <tr>	<td>	qsec    </td> <td> 5.254881	</td>	</tr>
+    <tr>	<td>	vs      </td> <td> 4.291331	</td>	</tr>
+    <tr>	<td>	am      </td> <td> 4.951499	</td>	</tr>
+    <tr>	<td>	gear    </td> <td> 5.176046	</td>	</tr>
+    <tr>	<td>	carb    </td> <td> 6.275307	</td>	</tr>
 </table>
 
 Dari hasil perhitungan di atas, dapat kita lihat bahwa ternyata nilai dari cyl dan disp dipengaruhi oleh variabel independen lainnya. Dengan demikian, kita perlu membuang variabel tersebut agar analisis regresi dapat dilakukan. 
@@ -233,6 +233,40 @@ for i in model:
     print(i.summary())
 ```
 Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tiap model. Untuk nilai statistik lainnya dapat dilihat pada syntax.
+<table style="width:100%">
+    <tr>
+        <th>Model</th>
+        <th>Variabel</th>
+        <th>Koefisien</th>
+        <th>P-Value</th>
+    </tr>
+    <tr>
+        <td rowspan="9">1</td>
+        <td>const</td>
+        <td>5.0293</td>
+        <td>0.637</td>
+    </tr>
+    <tr>	<td>	hp	</td> <td>	0.0155	</td> <td>	    0.306	</tr>
+    <tr>	<td>	drat	</td> <td>	2.3856	</td> <td>	0.079	</tr>
+    <tr>	<td>	wt	</td> <td>	-0.3515	</td> <td>	    0.754	</tr>
+    <tr>	<td>	qsec	</td> <td>	0.1904	</td> <td>	0.707	</tr>
+    <tr>	<td>	vs	</td> <td>	2.4657	</td> <td>	0.15	</tr>
+    <tr>	<td>	am	</td> <td>	6.0699	</td> <td>	0.003	</tr>
+    <tr>	<td>	gear	</td> <td>	1.3572	</td> <td>	0.274	</tr>
+    <tr>	<td>	carb	</td> <td>	-2.1244	</td> <td>	0.002	</tr>
+    <tr>
+        <td rowspan="8">1</td>
+        <td>const</td>
+        <td>4.7143</td>
+        <td>0.648</td>
+    </tr>
+    <tr>	<td>	hp	</td> <td>	0.0146	</td> <td>	0.311	</tr>
+    <tr>	<td>	drat	</td> <td>	2.4828	</td> <td>	0.054	</tr>
+    <tr>	<td>	qsec	</td> <td>	0.1141	</td> <td>	0.791	</tr>
+    <tr>	<td>	vs	</td> <td>	2.6869	</td> <td>	0.079	</tr>
+    <tr>	<td>	am	</td> <td>	6.2544	</td> <td>	0.001	</tr>
+    <tr>	<td>	gear	</td> <td>	1.4795	</td> <td>	0.198	</tr>
+    <tr>	<td>	carb	</td> <td>	-2.2185	</td> <td>	0	</tr>
 Model | Variabel | Koefisien | P-Value
 ----- | -------- | --------- | -------
 1     | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 5.0293 <br> 0.0155 <br> 2.3856 <br> -0.3515 <br> 0.1904 <br> 2.4657 <br> 6.0699 <br> 1.3572 <br> -2.1244 | 0.637 <br> 0.306 <br> 0.079 <br> 0.754 <br> 0.707 <br> 0.15 <br> 0.003 <br> 0.274 <br> 0.002
