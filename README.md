@@ -310,15 +310,6 @@ Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tia
     <tr>	<td>	am	    </td> <td>	8.6664	</td> <td>	0	</tr>
     <tr>	<td>	carb	</td> <td>	-1.5869	</td> <td>	0	</tr>
 </table>
-    
-Model | Variabel | Koefisien | P-Value
------ | -------- | --------- | -------
-1     | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 5.0293 <br> 0.0155 <br> 2.3856 <br> -0.3515 <br> 0.1904 <br> 2.4657 <br> 6.0699 <br> 1.3572 <br> -2.1244 | 0.637 <br> 0.306 <br> 0.079 <br> 0.754 <br> 0.707 <br> 0.15 <br> 0.003 <br> 0.274 <br> 0.002
-2     | const <br> cyl <br> hp <br> drat <br> qsec <br> vs <br> am <br> gear <br> carb | 4.7143 <br> 0.0146 <br> 2.4828 <br> 0.1141 <br> 2.6869 <br> 6.2544 <br> 1.4795 <br> -2.2185 | 0.648 <br> 0.311 <br> 0.054 <br> 0.791 <br> 0.079 <br> 0.001 <br> 0.198 <br> 0.0
-3     | const <br> cyl <br> hp <br> drat <br> vs <br> am <br> gear <br> carb | 7.0518 <br> 0.0132 <br> 2.4601 <br> 2.906 <br> 6.1124 <br> 1.4651 <br> -2.218 | 0.186 <br> 0.31 <br> 0.049 <br> 0.021 <br> 0.001 <br> 0.189 <br> 0.0
-4    | const <br> cyl <br> drat <br> vs <br> am <br> gear <br> carb | 10.1872 <br> 2.0471 <br> 2.6007 <br> 5.9254 <br> 1.3103 <br> -1.8558 | 0.024 <br> 0.078 <br> 0.031 <br> 0.001 <br> 0.234 <br> 0.0
-5    | const <br> cyl <br> drat <br> vs <br> am <br> carb | 12.9007 <br> 2.2434 <br> 3.1553 <br> 7.1908 <br> -1.6252 | 0.002 <br> 0.055 <br> 0.006 <br> 0.0 <br> 0.0
-6    | const <br> cyl <br> vs <br> am <br> carb | 19.864 <br> 4.1979 <br> 8.6664 <br> -1.5869 | 0.0 <br> 0.0 <br> 0.0 <br> 0.0
 
 Dari rangkuman model di atas, kita peroleh 6 model sebagai berikut:
 1. mpg = 5.0293 + 0.0155 hp + 2.3856 drat - 0.3515 wt + 0.1904 qsec + 2.4657 vs + 6.0699 am + 1.3572 gear - 2.1244 carb
@@ -351,14 +342,71 @@ for i in model:
     bic.append(i.bic)
 ```
 Berikut rangkuman nilai-nilai statistik dari setiap modelnya.
-Model | R-Squared | Adj R-Squared| Sum Square Error| Log-Likelihood | AIC        | BIC
------ | --------- | ------------ | --------------- | -------------- | ---------- | ----------
-1     | 0.938899  | 0.908349     | 59.546839       | -46.322056     | 110.644111 | 121.613994
-2     | 0.938512  | 0.913194     | 59.923853       | -46.400949     | 108.801897 | 118.552904
-3     | 0.938249  | 0.917666     | 60.180040       | -46.454275     | 106.908549 | 115.440680
-4     | 0.934507  | 0.917272     | 63.827037       | -47.189726     | 106.379453 | 113.692708
-5     | 0.929296  | 0.915156     | 68.905413       | -48.146700     | 106.293400 | 112.387779
-6     | 0.914661  | 0.902470     | 83.168500       | -50.498374     | 108.996748 | 113.872251
+<table>
+    <tr>
+        <th>Model</th>
+        <th>R-Squared</th>
+        <th>Adj R-Squared</th>
+        <th>Sum Square Error</th>
+        <th>Log-Likelihood</th>
+        <th>AIC</th>
+        <th>BIC</th>
+    </tr>
+    <tr>
+        <td> 1</td> 
+        <td> 0.938899   </td> 
+        <td> 0.908349   </td> 
+        <td> 59.546839  </td> 
+        <td> -46.322056 </td> 
+        <td> 110.644111 </td> 
+        <td> 121.613994 </td>
+    </tr>
+    <tr>
+        <td> 2</td> 
+        <td> 0.938512   </td> 
+        <td> 0.913194   </td> 
+        <td> 59.923853  </td> 
+        <td> -46.400949 </td> 
+        <td> 108.801897 </td> 
+        <td> 118.552904 </td>
+    </tr>
+    <tr>
+        <td> 3</td> 
+        <td> 0.938249   </td> 
+        <td> 0.917666   </td> 
+        <td> 60.180040  </td> 
+        <td> -46.454275 </td> 
+        <td> 106.908549 </td> 
+        <td> 115.440680 </td>
+    </tr>
+    <tr> 
+        <td> 4</td> 
+        <td> 0.934507   </td> 
+        <td> 0.917272   </td> 
+        <td> 63.827037  </td> 
+        <td> -47.189726 </td> 
+        <td> 106.379453 </td> 
+        <td> 113.692708 </td>
+        </tr>
+    <tr>
+        <td> 5          </td> 
+        <td> 0.929296   </td> 
+        <td> 0.915156   </td> 
+        <td> 68.905413  </td> 
+        <td> -48.146700 </td> 
+        <td> 106.293400 </td> 
+        <td> 112.387779 </td>
+    </tr>
+    <tr>
+        <td> 6          </td> 
+        <td> 0.914661   </td> 
+        <td> 0.902470   </td> 
+        <td> 83.168500  </td> 
+        <td> -50.498374 </td> 
+        <td> 108.996748 </td> 
+        <td> 113.872251 </td>
+    </tr>
+</table>
 
 Dari beberapa nilai statistik model di atas, diperoleh:
 1. Model 1 memiliki nilai R-Squared terbesar
