@@ -246,27 +246,27 @@ Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tia
         <td>5.0293</td>
         <td>0.637</td>
     </tr>
-    <tr>	<td>	hp	</td> <td>	0.0155	</td> <td>	    0.306	</tr>
+    <tr>	<td>	hp	    </td> <td>	0.0155	</td> <td>  0.306	</tr>
     <tr>	<td>	drat	</td> <td>	2.3856	</td> <td>	0.079	</tr>
-    <tr>	<td>	wt	</td> <td>	-0.3515	</td> <td>	    0.754	</tr>
+    <tr>	<td>	wt	    </td> <td>	-0.3515	</td> <td>  0.754	</tr>
     <tr>	<td>	qsec	</td> <td>	0.1904	</td> <td>	0.707	</tr>
-    <tr>	<td>	vs	</td> <td>	2.4657	</td> <td>	0.15	</tr>
-    <tr>	<td>	am	</td> <td>	6.0699	</td> <td>	0.003	</tr>
+    <tr>	<td>	vs	    </td> <td>	2.4657	</td> <td>	0.15	</tr>
+    <tr>	<td>	am	    </td> <td>	6.0699	</td> <td>	0.003	</tr>
     <tr>	<td>	gear	</td> <td>	1.3572	</td> <td>	0.274	</tr>
     <tr>	<td>	carb	</td> <td>	-2.1244	</td> <td>	0.002	</tr>
     <tr>
-        <td rowspan="8">1</td>
+        <td rowspan="8">2</td>
         <td>const</td>
         <td>4.7143</td>
         <td>0.648</td>
     </tr>
-    <tr>	<td>	hp	</td> <td>	0.0146	</td> <td>	0.311	</tr>
+    <tr>	<td>	hp	    </td> <td>	0.0146	</td> <td>	0.311	</tr>
     <tr>	<td>	drat	</td> <td>	2.4828	</td> <td>	0.054	</tr>
     <tr>	<td>	qsec	</td> <td>	0.1141	</td> <td>	0.791	</tr>
-    <tr>	<td>	vs	</td> <td>	2.6869	</td> <td>	0.079	</tr>
-    <tr>	<td>	am	</td> <td>	6.2544	</td> <td>	0.001	</tr>
+    <tr>	<td>	vs	    </td> <td>	2.6869	</td> <td>	0.079	</tr>
+    <tr>	<td>	am	    </td> <td>	6.2544	</td> <td>	0.001	</tr>
     <tr>	<td>	gear	</td> <td>	1.4795	</td> <td>	0.198	</tr>
-    <tr>	<td>	carb	</td> <td>	-2.2185	</td> <td>	0	</tr>
+    <tr>	<td>	carb	</td> <td>	-2.2185	</td> <td>	0	    </tr>
 Model | Variabel | Koefisien | P-Value
 ----- | -------- | --------- | -------
 1     | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 5.0293 <br> 0.0155 <br> 2.3856 <br> -0.3515 <br> 0.1904 <br> 2.4657 <br> 6.0699 <br> 1.3572 <br> -2.1244 | 0.637 <br> 0.306 <br> 0.079 <br> 0.754 <br> 0.707 <br> 0.15 <br> 0.003 <br> 0.274 <br> 0.002
