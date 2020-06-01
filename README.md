@@ -153,7 +153,7 @@ while drop_variable_VIF > 10 and len(X.keys())!=0:
         drop_variable_VIF = max(new_VIF)
 ```
 Berikut rangkuman dari nilai VIF setiap iterasi.
-<table style="width:100%">
+<table>
     <tr>
         <th>Iterasi</th>
         <th>Variabel</th>
@@ -233,7 +233,7 @@ for i in model:
     print(i.summary())
 ```
 Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tiap model. Untuk nilai statistik lainnya dapat dilihat pada syntax.
-<table style="width:100%">
+<table>
     <tr>
         <th>Model</th>
         <th>Variabel</th>
@@ -267,6 +267,50 @@ Berikut hanya saya rangkum koefisien dan p-value dari masing-masing variabel tia
     <tr>	<td>	am	    </td> <td>	6.2544	</td> <td>	0.001	</tr>
     <tr>	<td>	gear	</td> <td>	1.4795	</td> <td>	0.198	</tr>
     <tr>	<td>	carb	</td> <td>	-2.2185	</td> <td>	0	    </tr>
+    <tr>
+        <td rowspan="7">3</td>
+        <td>const</td>
+        <td>7.0518</td>
+        <td>0.186</td>
+    </tr>
+    <tr>	<td>	hp	    </td> <td>	0.0132	</td> <td>	0.31	</tr>
+    <tr>	<td>	drat	</td> <td>	2.4601	</td> <td>	0.049	</tr>
+    <tr>	<td>	vs	    </td> <td>	2.906	</td> <td>	0.021	</tr>
+    <tr>	<td>	am	    </td> <td>	6.1124	</td> <td>	0.001	</tr>
+    <tr>	<td>	gear	</td> <td>	1.4651	</td> <td>	0.189	</tr>
+    <tr>	<td>	carb	</td> <td>	-2.218	</td> <td>	0	    </tr>
+    <tr>
+        <td rowspan="6">4</td>
+        <td>const</td>
+        <td>10.1872</td>
+        <td>0.024</td>
+    </tr>
+    <tr>	<td>	drat	</td> <td>	2.0471	</td> <td>	0.078	</tr>
+    <tr>	<td>	vs	    </td> <td>	2.6007	</td> <td>	0.031	</tr>
+    <tr>	<td>	am	    </td> <td>	5.9254	</td> <td>	0.001	</tr>
+    <tr>	<td>	gear	</td> <td>	1.3103	</td> <td>	0.234	</tr>
+    <tr>	<td>	carb	</td> <td>	-1.8558	</td> <td>	0	    </tr>
+    <tr>
+        <td rowspan="5">5</td>
+        <td>const</td>
+        <td>12.9007</td>
+        <td>0.002</td>
+    </tr>
+    <tr>	<td>	drat	</td> <td>	2.2434	</td> <td>	0.055	</tr>
+    <tr>	<td>	vs	    </td> <td>	3.1553	</td> <td>	0.006	</tr>
+    <tr>	<td>	am	    </td> <td>	7.1908	</td> <td>	0	    </tr>
+    <tr>	<td>	carb	</td> <td>	-1.6252	</td> <td>	0	    </tr>
+    <tr>
+        <td rowspan="4">6</td>
+        <td>const</td>
+        <td>19.864</td>
+        <td>0</td>
+    </tr>
+    <tr>	<td>	vs	    </td> <td>	4.1979	</td> <td>	0	</tr>
+    <tr>	<td>	am	    </td> <td>	8.6664	</td> <td>	0	</tr>
+    <tr>	<td>	carb	</td> <td>	-1.5869	</td> <td>	0	</tr>
+</table>
+    
 Model | Variabel | Koefisien | P-Value
 ----- | -------- | --------- | -------
 1     | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 5.0293 <br> 0.0155 <br> 2.3856 <br> -0.3515 <br> 0.1904 <br> 2.4657 <br> 6.0699 <br> 1.3572 <br> -2.1244 | 0.637 <br> 0.306 <br> 0.079 <br> 0.754 <br> 0.707 <br> 0.15 <br> 0.003 <br> 0.274 <br> 0.002
