@@ -105,7 +105,6 @@ fig.update_layout(layout)
 fig.show()
 ```
 <img src="Scatter_Plot_Linearitas.png" class="img-responsive" alt=""> </div>
-![Scatter Plot Lineartias](https://github.com/Rangga1708/Motor_Trend_US_Analysis/blob/master/Scatter_Plot_Linearitas.png)
 
 Berdasarkan scatter plot di atas, tampak bahwa terdapat hubungan linear antara beberapa variabel independen dengan variabel mpg. Kita dapat simpulkan beberapa hal sebagai berikut:
 1. Terdapat hubungan linear negatif antara variabel cyl dan mpg. Artinya, semakin banyak silinder pada mobil, semakin sedikit bahan bakar yang terpakai.
@@ -154,11 +153,54 @@ while drop_variable_VIF > 10 and len(X.keys())!=0:
         drop_variable_VIF = max(new_VIF)
 ```
 Berikut rangkuman dari nilai VIF setiap iterasi.
-Iterasi | Variabel | VIF
-------- | -------- | ---
-1       | const <br> cyl <br> disp <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 2149.280570 <br> 19.691673 <br> 22.176578 <br> 10.308235 <br> 4.114787 <br> 17.319301 <br> 7.284777 <br> 4.702383 <br> 5.234086 <br> 7.002498 <br> 11.759377
-2       | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 2149.201123 <br> 18.589723 <br> 6.615471 <br> 4.024375 <br> 8.076653 <br> 6.744210 <br> 4.654625 <br> 5.176873 <br> 7.000588 <br> 7.077009
-3       | const <br> cyl <br> hp <br> drat <br> wt <br> qsec <br> vs <br> am <br> gear <br> carb | 736.258880 <br> 6.553351 <br> 3.142362 <br> 7.695028 <br> 5.254881 <br> 4.291331 <br> 4.951499 <br> 5.176046 <br> 6.275307
+<table style="width:100%">
+    <tr>
+        <th>Iterasi</th>
+        <th>Variabel</th>
+        <th>VIF</th>
+    </tr>
+    <tr>
+        <td rowspan="11">1</td>
+        <td>const</td>
+        <td>2149.280570</td>
+    </tr>
+    <tr>    <td>	cyl </td> <td> 19.691673	</td>	</tr>
+    <tr>	<td>	disp </td> <td> 22.176578	</td>	</tr>
+    <tr>	<td>	hp </td> <td> 10.308235	    </td>	</tr>
+    <tr>	<td>	drat </td> <td> 4.114787	</td>	</tr>
+    <tr>	<td>	wt </td> <td> 17.319301	    </td>	</tr>
+    <tr>	<td>	qsec </td> <td> 7.284777	</td>	</tr>
+    <tr>	<td>	vs </td> <td> 4.702383	    </td>	</tr>
+    <tr>	<td>	am </td> <td> 5.234086	    </td>	</tr>
+    <tr>	<td>	gear </td> <td> 7.002498	</td>	</tr>
+    <tr>	<td>	carb </td> <td> 11.759377	</td>	</tr>
+    <tr>
+        <td rowspan="10">2</td>
+        <td>const</td>
+        <td>2149.201123</td>
+    </tr>
+    <tr>	<td>	cyl </td> <td>18.589723	</td>	</tr>
+    <tr>	<td>	hp </td> <td>  6.615471	</td>	</tr>
+    <tr>	<td>	drat </td> <td>4.024375	</td>	</tr>
+    <tr>	<td>	wt </td> <td>  8.076653	</td>	</tr>
+    <tr>	<td>	qsec </td> <td>6.744210	</td>	</tr>
+    <tr>	<td>	vs </td> <td>  4.654625	</td>	</tr>
+    <tr>	<td>	am </td> <td>  5.176873	</td>	</tr>
+    <tr>	<td>	gear </td> <td>7.000588	</td>	</tr>
+    <tr>	<td>	carb </td> <td>7.077009	</td>	</tr>
+    <tr>
+        <td rowspan="10">3</td>
+        <td>const</td>
+        <td>736.258880</td>
+    </tr>
+    <tr>	<td>	hp </td> <td>   6.553351	</td>	</tr>
+    <tr>	<td>	drat </td> <td> 3.142362	</td>	</tr>
+    <tr>	<td>	wt </td> <td>   7.695028	</td>	</tr>
+    <tr>	<td>	qsec </td> <td> 5.254881	</td>	</tr>
+    <tr>	<td>	vs </td> <td>   4.291331	</td>	</tr>
+    <tr>	<td>	am </td> <td>   4.951499	</td>	</tr>
+    <tr>	<td>	gear </td> <td> 5.176046	</td>	</tr>
+    <tr>	<td>	carb </td> <td> 6.275307	</td>	</tr>
 
 Dari hasil perhitungan di atas, dapat kita lihat bahwa ternyata nilai dari cyl dan disp dipengaruhi oleh variabel independen lainnya. Dengan demikian, kita perlu membuang variabel tersebut agar analisis regresi dapat dilakukan. 
 
